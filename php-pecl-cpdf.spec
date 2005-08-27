@@ -2,7 +2,7 @@
 %define		_status		stable
 
 Summary:	%{_modname} - extension module for PHP
-Summary(pl):	%{_modname} - modu³ dla php
+Summary(pl):	%{_modname} - modu³ dla PHP
 Name:		php-pecl-%{_modname}
 Version:	2.0.0
 Release:	1
