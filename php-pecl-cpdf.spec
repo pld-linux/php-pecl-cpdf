@@ -1,7 +1,7 @@
 %define		_modname	cpdf
 %define		_status		stable
 Summary:	%{_modname} - extension module for PHP
-Summary(pl.UTF-8):   %{_modname} - moduł dla PHP
+Summary(pl.UTF-8):	%{_modname} - moduł dla PHP
 Name:		php-pecl-%{_modname}
 Version:	2.0.0
 Release:	0.1
