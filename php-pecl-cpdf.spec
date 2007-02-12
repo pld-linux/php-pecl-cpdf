@@ -1,7 +1,7 @@
 %define		_modname	cpdf
 %define		_status		stable
 Summary:	%{_modname} - extension module for PHP
-Summary(pl):	%{_modname} - modu³ dla PHP
+Summary(pl.UTF-8):   %{_modname} - moduÅ‚ dla PHP
 Name:		php-pecl-%{_modname}
 Version:	2.0.0
 Release:	0.1
@@ -24,8 +24,8 @@ support through libcpdf library.
 
 In PECL status of this extension is: %{_status}.
 
-%description -l pl
-Modu³ PHP dodaj±cy obs³ugê plików PDF poprzez bibliotekê libcpdf.
+%description -l pl.UTF-8
+ModuÅ‚ PHP dodajÄ…cy obsÅ‚ugÄ™ plikÃ³w PDF poprzez bibliotekÄ™ libcpdf.
 
 To rozszerzenie ma w PECL status: %{_status}.
 
