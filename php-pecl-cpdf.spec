@@ -7,7 +7,7 @@ Version:	5.0
 %define	subver	rc1
 %define	svnver	297236
 Release:	0.%{subver}.1
-License:	PHP 2.02
+License:	PHP 3.0
 Group:		Development/Languages/PHP
 # not yet
 #Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
