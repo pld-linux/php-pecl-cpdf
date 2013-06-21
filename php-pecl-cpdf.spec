@@ -1,44 +1,45 @@
-%define		_modname	cpdf
-%define		_status		beta
-Summary:	%{_modname} - extension module for PHP
-Summary(pl.UTF-8):	%{_modname} - moduł dla PHP
-Name:		php-pecl-%{_modname}
+%define		php_name	php%{?php_suffix}
+%define		modname	cpdf
+%define		status		beta
+%define		subver	rc1
+%define		svnver	297236
+Summary:	%{modname} - extension module for PHP
+Summary(pl.UTF-8):	%{modname} - moduł dla PHP
+Name:		%{php_name}-pecl-%{modname}
 Version:	5.0
-%define	subver	rc1
-%define	svnver	297236
 Release:	0.%{subver}.1
 License:	PHP 3.0
 Group:		Development/Languages/PHP
 # not yet
-#Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
+#Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # svn checkout http://svn.php.net/repository/pecl/cpdf/trunk cpdf
-Source0:	%{_modname}-%{version}%{subver}-%{svnver}.tgz
+Source0:	%{modname}-%{version}%{subver}-%{svnver}.tgz
 # Source0-md5:	de7b9ac1a9b270036bafd85fa8130315
 URL:		http://pecl.php.net/package/cpdf/
+BuildRequires:	%{php_name}-devel >= 3:5.0.0
 BuildRequires:	libcpdf-devel >= 2
-BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.344
+BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
-Requires:	php-common >= 4:5.0.4
-Obsoletes:	php-cpdf
+Requires:	php(core) >= 5.0.4
+Obsoletes:	%{php_name}-cpdf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a dynamic shared object (DSO) for PHP that will add PDF
 support through libcpdf library.
 
-In PECL status of this extension is: %{_status}.
+In PECL status of this extension is: %{status}.
 
 %description -l pl.UTF-8
 Moduł PHP dodający obsługę plików PDF poprzez bibliotekę libcpdf.
 
-To rozszerzenie ma w PECL status: %{_status}.
+To rozszerzenie ma w PECL status: %{status}.
 
 %prep
 %setup -q -c
 
 %build
-cd %{_modname}
+cd %{modname}
 phpize
 %configure
 %{__make}
@@ -47,10 +48,10 @@ phpize
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_sysconfdir}/conf.d,%{php_extensiondir}}
 
-install %{_modname}/modules/%{_modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
-cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{_modname}.ini
-; Enable %{_modname} extension module
-extension=%{_modname}.so
+install %{modname}/modules/%{modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
+cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
+; Enable %{modname} extension module
+extension=%{modname}.so
 EOF
 
 %clean
@@ -66,5 +67,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{_modname}.ini
-%attr(755,root,root) %{php_extensiondir}/%{_modname}.so
+%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{modname}.ini
+%attr(755,root,root) %{php_extensiondir}/%{modname}.so
