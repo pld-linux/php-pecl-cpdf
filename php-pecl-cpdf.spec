@@ -7,7 +7,7 @@ Summary:	%{modname} - extension module for PHP
 Summary(pl.UTF-8):	%{modname} - moduł dla PHP
 Name:		%{php_name}-pecl-%{modname}
 Version:	5.0
-Release:	0.%{subver}.1
+Release:	0.%{subver}.2
 License:	PHP 3.0
 Group:		Development/Languages/PHP
 # not yet
@@ -22,6 +22,7 @@ BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires:	php(core) >= 5.0.4
 Obsoletes:	%{php_name}-cpdf
+Provides:	php(%{modname}) = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,7 +49,7 @@ phpize
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_sysconfdir}/conf.d,%{php_extensiondir}}
 
-install %{modname}/modules/%{modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
+install -p %{modname}/modules/%{modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
 cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
 ; Enable %{modname} extension module
 extension=%{modname}.so
